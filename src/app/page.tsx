@@ -1,6 +1,4 @@
 "use client";
-
-import { useState } from "react";
 import { ChevronRight, ArrowRight, Star, Users, Zap } from "lucide-react";
 import Link from "next/link";
 
@@ -82,7 +80,7 @@ export default function HomePage() {
               Dramatic UX Improvements
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We've addressed every friction point identified in the UX audit to boost conversion rates and user satisfaction.
+              We&apos;ve addressed every friction point identified in the UX audit to boost conversion rates and user satisfaction.
             </p>
           </div>
 

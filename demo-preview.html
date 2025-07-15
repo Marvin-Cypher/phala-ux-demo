@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phala Cloud UX Demo Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .password-requirement {
+            transition: color 0.2s ease;
+        }
+        .password-requirement.met {
+            color: #10b981;
+        }
+        .password-requirement.unmet {
+            color: #6b7280;
+        }
+        .strength-bar {
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div class="container mx-auto px-6 py-16">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="mb-6">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-sm font-medium">
+                        🚀 UX Improvements Demo
+                    </span>
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                    Phala Cloud
+                    <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Reimagined</span>
+                </h1>
+                
+                <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                    Experience the dramatically improved user experience with simplified registration, 
+                    intuitive onboarding, and crystal-clear guidance that converts visitors into active users.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <button onclick="showRegistrationDemo()" class="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg">
+                        Try New Registration →
+                    </button>
+                    
+                    <button onclick="showDashboardDemo()" class="inline-flex items-center px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-gray-400 hover:bg-white transition-colors font-semibold text-lg">
+                        See New Dashboard
+                    </button>
+                </div>
+                
+                <!-- Key Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-gray-900">60% Less</div>
+                        <div class="text-gray-600">Form Fields</div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-gray-900">Real-time</div>
+                        <div class="text-gray-600">Validation</div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-gray-900">Clear</div>
+                        <div class="text-gray-600">Guidance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Sections (Hidden by default) -->
+    <div id="registration-demo" class="hidden">
+        <div class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-4">✨ Improved Registration Experience</h2>
+                        <p class="text-xl text-gray-600">Simplified form with real-time feedback and better guidance</p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- Before -->
+                        <div class="space-y-4">
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                                <h3 class="font-semibold text-red-800 mb-2">❌ Before: Complex Form</h3>
+                                <p class="text-sm text-red-700">5 fields + CAPTCHA = High abandonment</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-xl shadow-lg p-6 opacity-75">
+                                <h4 class="text-lg font-semibold mb-2">Create account</h4>
+                                <p class="text-sm text-gray-600 mb-4">Unlock your free TEE now.</p>
+                                <div class="space-y-3">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1">Username</label>
+                                        <input type="text" class="w-full p-2 border rounded text-sm" placeholder="Enter username" disabled />
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1">Email</label>
+                                        <input type="email" class="w-full p-2 border rounded text-sm" placeholder="name@example.com" disabled />
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1">Password</label>
+                                        <input type="password" class="w-full p-2 border rounded text-sm" disabled />
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1">Confirm Password</label>
+                                        <input type="password" class="w-full p-2 border rounded text-sm" disabled />
+                                    </div>
+                                    <div class="bg-gray-100 p-2 rounded text-center text-xs">CAPTCHA</div>
+                                    <button class="w-full bg-gray-400 text-white p-2 rounded text-sm" disabled>
+                                        Create account
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- After -->
+                        <div class="space-y-4">
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                <h3 class="font-semibold text-green-800 mb-2">✅ After: Simplified & Smart</h3>
+                                <p class="text-sm text-green-700">3 fields + real-time validation = Better UX</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-green-200">
+                                <h4 class="text-lg font-semibold mb-2">Create account</h4>
+                                <p class="text-sm text-gray-600 mb-6">Start your free secure cloud trial now.</p>
+                                
+                                <div class="space-y-4">
+                                    <!-- Email Field -->
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1">Email</label>
+                                        <input
+                                            type="email"
+                                            class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            placeholder="name@example.com"
+                                            value="alex@example.com"
+                                        />
+                                    </div>
+
+                                    <!-- Password Field -->
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1">Password</label>
+                                        <input
+                                            type="password"
+                                            id="demo-password"
+                                            class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            placeholder="Create a strong password"
+                                            oninput="updatePasswordStrength(this.value)"
+                                        />
+                                        
+                                        <!-- Real-time Password Validation -->
+                                        <div id="password-feedback" class="mt-3 space-y-2 hidden">
+                                            <div class="space-y-1">
+                                                <div class="password-requirement unmet flex items-center gap-2 text-xs" data-requirement="length">
+                                                    <span class="w-3 h-3">❌</span>
+                                                    <span>At least 8 characters</span>
+                                                </div>
+                                                <div class="password-requirement unmet flex items-center gap-2 text-xs" data-requirement="uppercase">
+                                                    <span class="w-3 h-3">❌</span>
+                                                    <span>One uppercase letter</span>
+                                                </div>
+                                                <div class="password-requirement unmet flex items-center gap-2 text-xs" data-requirement="lowercase">
+                                                    <span class="w-3 h-3">❌</span>
+                                                    <span>One lowercase letter</span>
+                                                </div>
+                                                <div class="password-requirement unmet flex items-center gap-2 text-xs" data-requirement="number">
+                                                    <span class="w-3 h-3">❌</span>
+                                                    <span>One number</span>
+                                                </div>
+                                                <div class="password-requirement unmet flex items-center gap-2 text-xs" data-requirement="special">
+                                                    <span class="w-3 h-3">❌</span>
+                                                    <span>One special character</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Strength Meter -->
+                                            <div class="space-y-1">
+                                                <div class="flex justify-between text-xs">
+                                                    <span class="text-gray-600">Password strength</span>
+                                                    <span id="strength-label" class="font-medium text-red-500">Weak</span>
+                                                </div>
+                                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                                    <div id="strength-bar" class="strength-bar h-2 rounded-full bg-red-500" style="width: 0%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- CAPTCHA Placeholder -->
+                                    <div class="bg-green-50 border-2 border-dashed border-green-300 rounded-lg p-3 text-center text-sm text-green-700">
+                                        ✓ CAPTCHA (Cloudflare Turnstile)
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <button onclick="showSuccessModal()" class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                                        Create account →
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Demo -->
+    <div id="dashboard-demo" class="hidden">
+        <div class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-4">🏠 Enhanced Dashboard Experience</h2>
+                        <p class="text-xl text-gray-600">Welcome panel and quick actions that guide users to success</p>
+                    </div>
+
+                    <!-- Welcome Panel -->
+                    <div class="bg-white rounded-2xl shadow-lg border p-8 mb-8">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold">👋 Welcome to Phala Cloud, Alex!</h3>
+                            <p class="text-gray-600 mt-2">Start deploying secure, confidential workloads using CVMs and GPU-TEE compute.</p>
+                        </div>
+                        
+                        <!-- Quick Action Tiles -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                            <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-blue-500 hover:bg-blue-50 transition-colors cursor-pointer">
+                                <div class="text-2xl mb-3">💳</div>
+                                <h4 class="font-semibold mb-2">Finish setup</h4>
+                                <p class="text-xs text-gray-600 mb-4">Add payment method, claim free credits</p>
+                                <button class="bg-blue-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors w-full">
+                                    Add Payment Method
+                                </button>
+                            </div>
+                            
+                            <div class="border-2 border-dashed border-blue-300 rounded-xl p-6 text-center bg-blue-25 hover:border-blue-500 hover:bg-blue-50 transition-colors cursor-pointer">
+                                <div class="text-2xl mb-3">🚀</div>
+                                <h4 class="font-semibold mb-2">Deploy a CVM</h4>
+                                <p class="text-xs text-gray-600 mb-4">Launch a containerized app in a secure TEE</p>
+                                <button class="bg-blue-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors w-full">
+                                    Launch CVM
+                                </button>
+                            </div>
+                            
+                            <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-yellow-500 hover:bg-yellow-50 transition-colors cursor-pointer">
+                                <div class="text-2xl mb-3">⚡</div>
+                                <h4 class="font-semibold mb-2">Deploy with GPU-TEE</h4>
+                                <p class="text-xs text-gray-600 mb-4">Access GPU acceleration for ML workloads</p>
+                                <button class="bg-gray-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors w-full">
+                                    GPU Deploy
+                                </button>
+                            </div>
+                            
+                            <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-green-500 hover:bg-green-50 transition-colors cursor-pointer">
+                                <div class="text-2xl mb-3">🧪</div>
+                                <h4 class="font-semibold mb-2">Try a sample app</h4>
+                                <p class="text-xs text-gray-600 mb-4">NGINX, LLM API server, or Hello World</p>
+                                <button class="border border-gray-300 text-gray-700 text-sm px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors w-full">
+                                    Try Sample
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Learn More Section -->
+                        <div class="border-t pt-6">
+                            <h4 class="font-semibold mb-4 flex items-center gap-2">
+                                📚 Learn More
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 text-sm">
+                                <a href="#" class="flex items-center gap-2 text-gray-600 hover:text-gray-900 p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                                    🔗 Quick Start Guide
+                                </a>
+                                <a href="#" class="flex items-center gap-2 text-gray-600 hover:text-gray-900 p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                                    🔗 What is a CVM?
+                                </a>
+                                <a href="#" class="flex items-center gap-2 text-gray-600 hover:text-gray-900 p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                                    Sample Apps Gallery
+                                </a>
+                                <a href="#" class="flex items-center gap-2 text-gray-600 hover:text-gray-900 p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                                    💬 Ask on Discord
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full mx-4">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="text-2xl">✅</span>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Check Your Email</h3>
+                
+                <div class="space-y-4 text-left">
+                    <p class="text-gray-600">
+                        We've sent a verification email to <strong>alex@example.com</strong>
+                    </p>
+                    
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-900 mb-2">What to expect:</h4>
+                        <ul class="text-sm text-blue-800 space-y-1">
+                            <li>• Email may take a few minutes to arrive</li>
+                            <li>• Check your spam/junk folder if you don't see it</li>
+                            <li>• The verification link will log you in automatically</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flex gap-3 mt-6">
+                    <button onclick="closeSuccessModal()" class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                        I'll check my email
+                    </button>
+                    <button onclick="showDashboardDemo(); closeSuccessModal()" class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        Continue to Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="fixed bottom-6 right-6 space-y-2">
+        <button onclick="goHome()" class="block bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg shadow-lg hover:bg-gray-50 transition-colors">
+            🏠 Home
+        </button>
+        <button onclick="showRegistrationDemo()" class="block bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-700 transition-colors">
+            📝 Registration
+        </button>
+        <button onclick="showDashboardDemo()" class="block bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors">
+            🏠 Dashboard
+        </button>
+    </div>
+
+    <script>
+        // Demo navigation functions
+        function goHome() {
+            document.getElementById('registration-demo').classList.add('hidden');
+            document.getElementById('dashboard-demo').classList.add('hidden');
+            document.querySelector('.bg-gradient-to-br').style.display = 'block';
+        }
+
+        function showRegistrationDemo() {
+            document.querySelector('.bg-gradient-to-br').style.display = 'none';
+            document.getElementById('dashboard-demo').classList.add('hidden');
+            document.getElementById('registration-demo').classList.remove('hidden');
+        }
+
+        function showDashboardDemo() {
+            document.querySelector('.bg-gradient-to-br').style.display = 'none';
+            document.getElementById('registration-demo').classList.add('hidden');
+            document.getElementById('dashboard-demo').classList.remove('hidden');
+        }
+
+        function showSuccessModal() {
+            document.getElementById('success-modal').classList.remove('hidden');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+
+        // Password strength validation
+        function updatePasswordStrength(password) {
+            const feedback = document.getElementById('password-feedback');
+            
+            if (password) {
+                feedback.classList.remove('hidden');
+            } else {
+                feedback.classList.add('hidden');
+                return;
+            }
+            
+            const requirements = [
+                { test: password.length >= 8, element: 'length' },
+                { test: /[A-Z]/.test(password), element: 'uppercase' },
+                { test: /[a-z]/.test(password), element: 'lowercase' },
+                { test: /[0-9]/.test(password), element: 'number' },
+                { test: /[^A-Za-z0-9]/.test(password), element: 'special' }
+            ];
+            
+            let metCount = 0;
+            requirements.forEach(req => {
+                const element = document.querySelector(`[data-requirement="${req.element}"]`);
+                if (req.test) {
+                    metCount++;
+                    element.classList.remove('unmet');
+                    element.classList.add('met');
+                    element.children[0].textContent = '✅';
+                } else {
+                    element.classList.remove('met');
+                    element.classList.add('unmet');
+                    element.children[0].textContent = '❌';
+                }
+            });
+            
+            const strength = Math.round((metCount / requirements.length) * 100);
+            const strengthBar = document.getElementById('strength-bar');
+            const strengthLabel = document.getElementById('strength-label');
+            
+            strengthBar.style.width = `${strength}%`;
+            
+            if (strength < 40) {
+                strengthBar.className = 'strength-bar h-2 rounded-full bg-red-500';
+                strengthLabel.textContent = 'Weak';
+                strengthLabel.className = 'font-medium text-red-500';
+            } else if (strength < 80) {
+                strengthBar.className = 'strength-bar h-2 rounded-full bg-yellow-500';
+                strengthLabel.textContent = 'Medium';
+                strengthLabel.className = 'font-medium text-yellow-500';
+            } else {
+                strengthBar.className = 'strength-bar h-2 rounded-full bg-green-500';
+                strengthLabel.textContent = 'Strong';
+                strengthLabel.className = 'font-medium text-green-600';
+            }
+        }
+
+        // Demo password example
+        setTimeout(() => {
+            const passwordInput = document.getElementById('demo-password');
+            if (passwordInput) {
+                passwordInput.placeholder = 'Try typing: MyStr0ng!Pass';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
